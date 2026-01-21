@@ -25,8 +25,8 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="logo">
-                    <a id="logo-icon" href="/" style=""></a>
-                    <a id="logo-face" href="/" style="display: none;"></a>
+                    <a id="logo-icon" href="index" style=""></a>
+                    <a id="logo-face" href="index" style="display: none;"></a>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -40,11 +40,11 @@
                                 class="bi bi-linkedin fs-6 pe-1"></i></a>
                     </div>
                 </div>
-                <?php $currenturl = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'); ?>
+                <?php $path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'); $segments = explode('/', $path); $currenturl = end($segments); $projectFolder = basename(__DIR__);?>
                 <div class="menulinks">
-                     <a href="/" class="<?= $currenturl == '' ? 'active' : '' ?>">About</a>
-                    <a href="/ui" class="<?= $currenturl == 'ui' ? 'active' : '' ?>">UI</a>
-                    <a href="/ux" class="<?php 
+                     <a href="index" class="<?php if(!$currenturl || $currenturl=='index' || $currenturl==$projectFolder){print 'active';}?>">About</a>
+                    <a href="ui" class="<?= $currenturl == 'ui' ? 'active' : '' ?>">UI</a>
+                    <a href="ux" class="<?php 
                     if ($currenturl=='ux'
                     || $currenturl=='ux-irctc'
                     || $currenturl=='ux-mobile'
@@ -53,9 +53,9 @@
                     || $currenturl=='ux-crm'
                     ){print 'active';}
                     ?>">UX</a>
-                    <a href="/graphics" class="<?= $currenturl == 'graphics' ? 'active' : '' ?>"><span class="d-none d-lg-inline">Graphics</span></a>
-                    <a href="/art" class="<?= $currenturl == 'art' ? 'active' : '' ?>">Art</a>
-                    <a href="/blog" class="<?= $currenturl == 'blog' ? 'active' : '' ?>">Blog</a>
+                    <a href="graphics" class="<?= $currenturl == 'graphics' ? 'active' : '' ?>"><span class="d-none d-lg-inline">Graphics</span></a>
+                    <a href="art" class="<?= $currenturl == 'art' ? 'active' : '' ?>">Art</a>
+                    <a href="blog" class="<?= $currenturl == 'blog' ? 'active' : '' ?>">Blog</a>
                     <!--<a target="_blank" href="https://docs.google.com/document/d/1p58FEhLkl8djv7e3yVGV66T60dw_F8u3SE0CGCtdf9c/edit?usp=sharing">CV</a>     -->
                 </div>
             </div>

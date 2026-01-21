@@ -39,7 +39,7 @@ if ($endPage > $totalPages) {
                 <article class="card p-1 px-lg-3 py-lg-2 shadow-sm">
 
                     <h5 class="m-0 mb-2">
-                        <a target="_blank" class=" text-dark"
+                        <a target="_blank" class="mytitle text-dark"
                            href="<?php echo $slug; ?>">
                             <?php echo htmlspecialchars($title); ?>
                         </a>
@@ -107,7 +107,14 @@ if ($endPage > $totalPages) {
 </nav>
 </div>
 
-
+<style>
+    .card *{ transition: 1s;}
+    .card:hover .btn-light{background-color:#005bdd;color:white!important; transition: 1s;}
+    .card:hover a.mytitle{color: #005bdd !important; transition: 1s;}
+    .card img{margin-top:3px;margin-bottom:3px;transition: 0.25s;}
+    .card:hover img{margin-top:0px;margin-bottom:6px;transition: 0.25s;}
+    .card:hover{border-color: #8797ad !important; transition: 1s;}
+</style>
 
 
 
