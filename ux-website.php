@@ -1,9 +1,7 @@
-<?php include 'a-header.php'; ?>
+<?php include '_a_header.php'; ?>
 <content>
 <div class="fullwidth">
-<div class="pagewidth">
-<?php include 'a-ux-submenu.php'; ?>
-</div>
+<?php include '_menu-ux.php'; ?>
 </div>
 <div id="mycontent-wrapper" class="pagewidth block">
     <div class="pagewidth one-column">
@@ -14,6 +12,7 @@
     <style>#mycontent h1.title{display:none;}@media screen and (min-width: 1032px) {.pagewidth{width:1032px;} }</style>
           <div class="display-6 text-center mt-3 mb-1 text-success text-uppercase fw-bold jump e">
           Buy Sell Properties - Website</div>
+          <div class="opacity-75 text-dark mt-2 text-center"><i>Date: 1, August 2022</i></div>
           <hr class="my-3">
           <div class="h5 text-center text-dark fw-normal">
           Materials: Cards, Sticky Notes, Google Doc, Jam Board, <u>Adobe XD</u>, Photoshop | Timeline: 4 Weeks
@@ -54,11 +53,11 @@
           <div class="clear h4 bg-dark text-white p-2 ps-4 mb-3">Information Architecture</div>
           <img src="content/website/7-sitemap.png" width="100%"><br><br>
           <div class="clear h4 bg-dark text-white p-2 ps-4 mb-3">Live Website</div>
-          <a href="&lt;?php print $base_url; ?&gt;/image/ibsrealtor-homepage" target="_blank"><img src="&lt;?php print $base_url; ?&gt;/file/images/8-2022/ibsrealtor-homepage.jpg" width="100%"></a>
+          <a href="/image/ibsrealtor-homepage" target="_blank"><img src="content/works/webdesign 2022/IBSrealtor homepage.jpg" width="100%"></a>
     </div>
 </div>
 </div>
 </div>
     </div>
 </content>
-<?php include 'a-footer.php'; ?>
+<?php include '_a_footer.php'; ?>

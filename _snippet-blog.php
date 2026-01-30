@@ -1,0 +1,179 @@
+<?php if($arg[0]!='blog' && $arg[0]!='graphics-blog' && $arg[0]!='art-blog' && $arg[0]!='blog'){
+    print '</br></br><div class="container-xl bg-dark text-white rounded p-2 p-xl-3 h4 text-uppercase text-center mt-3 mb-0">Related Blog Posts</div>';
+    }
+?>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<?php
+/* =========================================================
+   LOAD DATA
+========================================================= */
+$posts = require __DIR__ . '/blog-data.php';
+
+/* =========================================================
+   KEYWORD FILTER (default = all)
+========================================================= */
+$keyword = $_GET['keyword'] ?? 'all';
+$keyword = trim(strtolower($keyword));
+
+if ($keyword !== 'all') {
+
+    // split keywords by comma
+    $keywords = array_map('trim', explode(',', $keyword));
+
+    // normalize keywords (remove spaces)
+    $keywords = array_map(function ($k) {
+        return str_replace(' ', '', $k);
+    }, $keywords);
+
+    $posts = array_filter($posts, function ($post) use ($keywords) {
+
+        $title = strtolower($post[0]);
+        $title = str_replace(' ', '', $title);
+
+        // match ANY keyword
+        foreach ($keywords as $k) {
+            if ($k !== '' && strpos($title, $k) !== false) {
+                return true;
+            }
+        }
+
+        return false;
+    });
+
+    // reindex array
+    $posts = array_values($posts);
+}
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+$perPage = 15;
+$totalPosts = count($posts);
+$totalPages = max(1, ceil($totalPosts / $perPage));
+
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$page = max(1, min($page, $totalPages));
+
+$offset = ($page - 1) * $perPage;
+$currentPosts = array_slice($posts, $offset, $perPage);
+
+/* =========================================================
+   PAGINATION RANGE
+========================================================= */
+$maxPagesToShow = 8;
+$startPage = max(1, $page - floor($maxPagesToShow / 2));
+$endPage   = min($totalPages, $startPage + $maxPagesToShow - 1);
+
+if ($endPage - $startPage + 1 < $maxPagesToShow) {
+    $startPage = max(1, $endPage - $maxPagesToShow + 1);
+}
+?>
+
+<!-- =======================================================
+     HTML OUTPUT
+======================================================= -->
+
+<div class="<?php if($keyword=='all'){print 'container-fluid';}else{print 'container-xl p-0';}?>">
+<?php if($keyword!='all'):?>        
+<div class="row mb-3 overflow-visible">
+    <div class="col-sm-6 alert Xalert-warning d-flex align-items-start justify-content-start mt-0 mb-0" role="alert">
+        <i class="bi bi-info-circle-fill me-2 fs-6"></i>
+        <div class="fs-6 "><i>Showing posts for : <span class="text-capitalize fw-bold"><?php echo htmlspecialchars($keyword); ?></i></span></div>
+    </div>
+    <?php include '_snippet-blog-search-box-bigger.php'; ?>
+</div>
+<?php endif;?>
+    <div class="row" data-masonry='{"percentPosition": true }'>
+            <?php if (empty($currentPosts)): ?>
+            <p class="text-center text-muted">No posts found.</p>
+        <?php endif; ?>
+        <?php foreach ($currentPosts as $post): ?>
+            <?php list($title, $date, $image, $slug) = $post; ?>
+            <?php if (!empty($image)): ?>
+            <div class="col-sm-6 col-xl-4 mb-4">
+                <article class="card p-1 px-lg-3 py-lg-2 shadow-sm">
+                    <h5 class="m-0 mb-2">
+                        <a target="_blank"
+                           class="mytitle text-dark"
+                           href="<?php echo htmlspecialchars($slug); ?>">
+                            <?php echo htmlspecialchars($title); ?>
+                        </a>
+                    </h5>
+
+                    <p class="opacity-75 m-0 mb-2">
+                        <?php echo htmlspecialchars($date); ?>
+                        <span class="opacity-50"> | </span>
+                        Created by S. Neelakandan
+                    </p>
+
+                    <a target="_blank"
+                       href="<?php echo htmlspecialchars($slug); ?>">
+                        <img class="img-fluid rounded"
+                             height="400" width="660"
+                             loading="lazy"
+                             src="<?php echo htmlspecialchars($image); ?>"
+                             alt="<?php echo htmlspecialchars($title); ?>">
+                    </a>
+
+                    <a target="_blank"
+                       href="<?php echo htmlspecialchars($slug); ?>"
+                       class="btn btn-light text-secondary mt-2">
+                        Read More &gt;
+                    </a>
+
+                </article>
+            </div>
+        <?php endif; ?>
+        <?php endforeach; ?>
+
+    </div>
+</div>
+
+<!-- =======================================================
+     PAGINATION
+======================================================= -->
+
+<div class="mb-5">
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+
+            <!-- Prev -->
+            <li class="page-item <?php echo ($page <= 1) ? 'disabled' : ''; ?>">
+                <a class="page-link rounded me-1 fs-5 p-2 p-lg-3"
+                   href="?page=<?php echo $page - 1; ?>&keyword=<?php echo urlencode($keyword); ?>">
+                    « Prev
+                </a>
+            </li>
+
+            <!-- Page numbers -->
+            <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
+                <li class="page-item <?php echo ($i === $page) ? 'active' : ''; ?>">
+                    <a class="page-link rounded me-1 fs-5 p-2 p-lg-3"
+                       href="?page=<?php echo $i; ?>&keyword=<?php echo urlencode($keyword); ?>">
+                        <?php echo $i; ?>
+                    </a>
+                </li>
+            <?php endfor; ?>
+
+            <!-- Next -->
+            <li class="page-item <?php echo ($page >= $totalPages) ? 'disabled' : ''; ?>">
+                <a class="page-link rounded me-1 fs-5 p-2 p-lg-3"
+                   href="?page=<?php echo $page + 1; ?>&keyword=<?php echo urlencode($keyword); ?>">
+                    Next »
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+</div>
+
+
+<style>
+    .card *{ transition: 1s;}
+    .card:hover .btn-light{background-color:#005bdd;color:white!important; transition: 1s;}
+    .card:hover a.mytitle{color: #005bdd !important; transition: 1s;}
+    .card img{margin-top:3px;margin-bottom:3px;transition: 0.25s;}
+    .card:hover img{margin-top:0px;margin-bottom:6px;transition: 0.25s;}
+    .card:hover{border-color: #8797ad !important; transition: 1s;}
+    .card .btn, .card .btn:hover{transition: 0s!important;}
+</style>

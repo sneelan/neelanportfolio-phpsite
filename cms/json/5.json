@@ -1,0 +1,29 @@
+{
+    "id": 5,
+    "title": "testing",
+    "url": "dddd-bbd",
+    "category": "aaa",
+    "tags": [
+        "bbb"
+    ],
+    "keyword": "cc",
+    "keyword_list": [
+        "ddd"
+    ],
+    "featured_image": "",
+    "meta_thumbnail": "",
+    "body": "eee",
+    "related_posts": [],
+    "related_links": [],
+    "settings": {
+        "ads": false,
+        "sponsor": true,
+        "beautiful": true
+    },
+    "author": "dddd",
+    "published_date": "2025-10-20",
+    "updated_date": "2025-10-25",
+    "sticky": true,
+    "frontpage": true,
+    "published": "1"
+}

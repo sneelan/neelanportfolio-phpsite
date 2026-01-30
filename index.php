@@ -1,4 +1,4 @@
-<?php include 'a-header.php'; ?>
+<?php include '_a_header.php'; ?>
 <content>
 <div id="mypage">
     <div id="mycontent-wrapper" class="pagewidth block">
@@ -250,6 +250,25 @@
     <div id="mycontent" class="boxshadow">
         <img src="content/slides/screen 10.jpg" width="975" class="fullwidth"></div>
 </div>
+
+<br><div class="pagewidth one-column">
+    <div id="mycontent" class="boxshadow">
+        <img src="content/slides/webdesign 11.jpg" width="975" class="fullwidth"></div>
+</div>
+<br><div class="pagewidth one-column">
+    <div id="mycontent" class="boxshadow">
+        <img src="content/slides/webdesign 4.jpg" width="975" class="fullwidth"></div>
+</div>
+<br><div class="pagewidth one-column">
+    <div id="mycontent" class="boxshadow">
+        <img src="content/slides/webdesign 6.jpg" width="975" class="fullwidth"></div>
+</div>
+<br><div class="pagewidth one-column">
+    <div id="mycontent" class="boxshadow">
+        <img src="content/slides/webdesign 7.jpg" width="975" class="fullwidth"></div>
+</div>
+
+
 <br><div class="pagewidth one-column">
     <div id="mycontent" class="boxshadow">
         <a href="https://webneel.com/neelan/album/logo-design"><img src="content/slides/screen 11.jpg" width="975" class="fullwidth"></a>
@@ -290,4 +309,4 @@
     </div>
 </div>
 </content>
-<?php include 'a-footer.php'; ?>
+<?php include '_a_footer.php'; ?>

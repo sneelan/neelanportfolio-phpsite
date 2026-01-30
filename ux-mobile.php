@@ -1,9 +1,7 @@
-<?php include 'a-header.php'; ?>
+<?php include '_a_header.php'; ?>
 <content>
 <div class="fullwidth">
-<div class="pagewidth">
-<?php include 'a-ux-submenu.php'; ?>
-</div>
+<?php include '_menu-ux.php'; ?>
 </div>
 <div id="mycontent-wrapper" class="pagewidth block">
     <div class="pagewidth one-column">
@@ -12,11 +10,13 @@
   <div id="node-content">
   <div>
     <style>#mycontent h1.title{display:none;}@media screen and (min-width: 1032px) {.pagewidth{width:1032px;} }</style>
-          <div class="display-6 text-center mt-3 mb-1 text-dark jump e ">Find Rental Properties - Mobile App</div>
+          <div class="display-6 text-center mt-3 mb-1 text-dark fw-bold jump e text-uppercase">Find Rental Properties - Mobile App</div>
+          <div class="opacity-75 text-dark mt-2 text-center"><i>Date: 10, August 2022</i></div>
           <hr class="my-3">
           <div class="h5 text-center text-dark fw-normal">
           Materials: Cards, Sticky Notes, Google Doc, Jam Board, <u>Figma</u>, Photoshop | Timeline: 4 Weeks
           </div>
+          
           <hr class="my-3">
           <div class="h5 text-center text-dark fw-normal">Users: Tenants &amp; House Owners | Client :
           <a class=" " href="https://elegantbuilders.in" target="_blank">ElegantBuilders.in</a>
@@ -96,4 +96,4 @@
 </div>
     </div>
 </content>
-<?php include 'a-footer.php'; ?>
+<?php include '_a_footer.php'; ?>

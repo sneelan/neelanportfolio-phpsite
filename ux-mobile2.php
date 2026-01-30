@@ -1,9 +1,7 @@
-<?php include 'a-header.php'; ?>
+<?php include '_a_header.php'; ?>
 <content>
 <div class="fullwidth">
-<div class="pagewidth">
-<?php include 'a-ux-submenu.php'; ?>
-</div>
+<?php include '_menu-ux.php'; ?>
 </div>
 <div id="mycontent-wrapper" class="pagewidth block">
     <div class="pagewidth one-column">
@@ -14,6 +12,7 @@
     <style>#mycontent h1.title{display:none;}@media screen and (min-width: 1032px) {.pagewidth{width:1032px;} }</style>
           <div class="display-6 text-center mt-3 mb-1 text-danger text-uppercase fw-bold jump e">
           Free Teatment - App<span class="fw-normal"> (Social Good)</span></div>
+          <div class="opacity-75 text-dark mt-2 text-center"><i>Date: 1, August 2022</i></div>
           <hr class="my-3">
           <div class="h5 text-center text-dark fw-normal bg-warning bg-opacity-75 p-3">
           Design a platform to help people without income get medical treatment.
@@ -53,4 +52,4 @@
 </div>
     </div>
 </content>
-<?php include 'a-footer.php'; ?>
+<?php include '_a_footer.php'; ?>

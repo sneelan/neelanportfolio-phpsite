@@ -1,0 +1,68 @@
+@mixin theme-classes($prefix, $theme-map, $properties: ()) {
+  @each $name, $value in $theme-map {
+    .#{$prefix}-theme-#{$name} {
+      @each $property, $property-settings in $properties {
+        $property-value: if(length($property-settings) >= 1, nth($property-settings, 1), null);
+        $important-flag: if(length($property-settings) >= 2, nth($property-settings, 2), null);
+        $final-value: if($property-value == 'theme-color', $value, $property-value);
+        #{$property}: if($important-flag == important, unquote("#{$final-value} !important"), $final-value);
+      }
+    }
+  }
+}
+  
+  // Define the theme colors map
+  $theme-colors: (
+    primary: $theme-primary,
+    primary-light: $theme-primary-light,
+    primary-verylight: $theme-primary-verylight,
+    secondary: $theme-secondary,
+    secondary-light: $theme-secondary-light,
+    secondary-verylight: $theme-secondary-verylight,
+    accent: $theme-accent,
+    accent-light: $theme-accent-light,
+    accent-verylight: $theme-accent-verylight,
+    dark: $dark,
+  );
+  
+  // Use the mixin to generate classes
+  @include theme-classes('bg', $theme-colors, (background-color:(theme-color)));
+  @include theme-classes('text', $theme-colors, (color:(theme-color)));
+  @include theme-classes('btn', $theme-colors, (background-color:(theme-color,important), display:(inline-block), padding:(1em)));
+
+.text-theme-med{font-size: 14px;}
+.anchor-dark{color: $theme-primary-light; &:hover{color: white;}}
+.hover-bg-theme-primary:hover{ background-color: $theme-primary;}
+.hover-bg-theme-primary-light:hover{ background-color: $theme-primary-light;}
+.hover-bg-theme-primary-verylight:hover{ background-color: $theme-primary-verylight;}
+.hover-bg-theme-accent:hover{ background-color: $theme-accent;}
+.hover-bg-theme-accent-light:hover{ background-color: $theme-accent-light;}
+.hover-bg-theme-accent-verylight:hover{ background-color: $theme-accent-verylight;}
+.hover-bg-theme-secondary:hover{ background-color: $theme-secondary;} 
+.hover-bg-theme-dark:hover{ background-color: $dark;} 
+
+.border-theme-primary{border-color:$theme-primary!important;}
+.border-theme-primary-light{border-color:$theme-primary-light!important;}
+.border-theme-primary-verylight{border-color:$theme-primary-verylight!important;}
+.border-theme-accent{border-color:$theme-accent!important;}
+.border-theme-accent-light{border-color:$theme-accent-light!important;}
+.border-theme-accent-verylight{border-color:$theme-accent-verylight!important;}
+
+.hover-underline:hover{text-decoration: underline;color: black;}
+
+.hover:hover .img-hover-zoom{@include zoom(1.1); @include transition(1.5);}
+.hover .img-hover-zoom{@include zoom(1);@include transition(1.5);}
+
+.border-red{border-color:$theme-secondary!important;border-width:2px!important;} 
+
+
+.primary-svg svg{fill:$theme-primary;}
+.secondary-svg svg{fill:$theme-secondary;}
+.accent-svg svg{fill:$theme-accent;} 
+
+.hover-opacity-100:hover{@include opacity-hover(1);}
+.hover-opacity-75:hover{@include opacity-hover(0.75);}
+.hover-opacity-50:hover{@include opacity-hover(0.5);}
+.hover-opacity-25:hover{@include opacity-hover(0.25);}
+
+.btn-sm{font-size:14px;}

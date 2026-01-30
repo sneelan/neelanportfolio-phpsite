@@ -1,9 +1,7 @@
-<?php include 'a-header.php'; ?>
+<?php include '_a_header.php'; ?>
 <content>
 <div class="fullwidth">
-<div class="pagewidth">
-<?php include 'a-ux-submenu.php'; ?>
-</div>
+<?php include '_menu-ux.php'; ?>
 </div>
 <div id="mycontent-wrapper" class="pagewidth block">
     <div class="pagewidth one-column">
@@ -15,6 +13,7 @@
     </div>
           <div class="display-6 text-center mt-3 mb-1 text-primary fw-bold text-uppercase jump e">
           Task Management - CRM Desktop APP</div>
+          <div class="opacity-75 text-dark mt-2 text-center"><i>Date: 1, November 2022</i></div>
           <hr class="my-3">
           <div class="h5 text-center text-dark fw-normal">
           Materials: Cards, Sticky Notes, Google Doc, Jam Board, <u>Figma</u>, Photoshop | Timeline: 4 Weeks
@@ -138,4 +137,4 @@
 </div>
     </div>
 </content>
-<?php include 'a-footer.php'; ?>
+<?php include '_a_footer.php'; ?>
